@@ -23,7 +23,7 @@
     </style>
   </head>
   <body class="bg-green-200">
-    <div class="container 2xl:max-w-screen-lg xl:max-w-screen-md mx-auto md:mt-24">
+    <div class="container 2xl:max-w-screen-lg lg:max-w-screen-md mx-auto md:mt-24">
       <h1 class="text-center text-green-800 font-extrabold tracking-widest text-3xl my-10">
         SPLI <br />
         TTER
@@ -32,42 +32,51 @@
       <!-- grid -->
       <div class="grid md:grid-cols-2 bg-white rounded-2xl p-8 gap-4">
         <div id="input-bill" class="w-full mx-auto">
-          <h1>Bill</h1>
-          <div class="relative">
-            <img src="./images/icon-dollar.svg" alt="icon-dollar" class="absolute top-1/2 left-4 transform -translate-y-1/2" />
-            <input type="text" dir="rtl" data-money class="rounded w-full h-10 font-bold bg-gray-100" />
+          <!-- bill input -->
+          <div>
+            <h1>Bill</h1>
+            <div class="relative">
+              <img src="./images/icon-dollar.svg" alt="icon-dollar" class="absolute top-1/2 left-4 transform -translate-y-1/2" />
+              <input type="text" dir="rtl" data-money class="rounded w-full h-10 font-bold bg-gray-100" />
+            </div>
           </div>
-
-          <h1>Select Tip %</h1>
-          <div class="grid grid-cols-2 gap-3 w-full text-white">
-            <button class="px-4 py-2 bg-green-900 rounded">5%</button>
-            <button class="px-4 py-2 bg-green-900 rounded">10%</button>
-            <button class="px-4 py-2 bg-green-900 rounded">15%</button>
-            <button class="px-4 py-2 bg-green-900 rounded">25%</button>
-            <button class="px-4 py-2 bg-green-900 rounded">50%</button>
-            <input type="text" class="px-4 py-2 bg-gray-100 rounded text-center font-bold" placeholder="Custom" dir="rtl" />
+          <!-- select tip -->
+          <div class="my-5">
+            <h1>Select Tip %</h1>
+            <div class="grid grid-cols-2 gap-3 w-full text-white">
+              <button class="px-4 py-2 bg-green-900 rounded">5%</button>
+              <button class="px-4 py-2 bg-green-900 rounded">10%</button>
+              <button class="px-4 py-2 bg-green-900 rounded">15%</button>
+              <button class="px-4 py-2 bg-green-900 rounded">25%</button>
+              <button class="px-4 py-2 bg-green-900 rounded">50%</button>
+              <input type="text" class="px-4 py-2 bg-gray-100 rounded text-center font-bold" placeholder="Custom" dir="rtl" />
+            </div>
           </div>
-
-          <h1>Number of people</h1>
-          <div class="relative">
-            <img src="./images/icon-person.svg" alt="icon-dollar" class="absolute top-1/2 left-4 transform -translate-y-1/2" />
-            <input type="text" dir="rtl" data-money class="rounded w-full h-10 font-bold bg-gray-100" />
+          <!-- people -->
+          <div>
+            <h1>Number of people</h1>
+            <div class="relative">
+              <img src="./images/icon-person.svg" alt="icon-dollar" class="absolute top-1/2 left-4 transform -translate-y-1/2" />
+              <input type="text" dir="rtl" data-money class="rounded w-full h-10 font-bold bg-gray-100" />
+            </div>
           </div>
         </div>
         <div id="display-bill" class="bg-green-900 rounded-xl px-3 py-5 text-white font-bold flex md:justify-between flex-col">
-          <div class="flex justify-between gap-5">
-            <h1>
-              Tip Amount <br />
-              <span class="text-gray-300 text-sm font-light">/ person</span>
-            </h1>
-            <div class="text-4xl" data-display>$0.00</div>
-          </div>
-          <div class="flex justify-between gap-5 my-4">
-            <h1>
-              Total <br />
-              <span class="text-gray-300 text-sm font-light">/ person</span>
-            </h1>
-            <div class="text-4xl" data-display>$00.00</div>
+          <div>
+            <div class="flex justify-between gap-5">
+              <h1>
+                Tip Amount <br />
+                <span class="text-gray-300 text-sm font-light">/ person</span>
+              </h1>
+              <div class="text-4xl" data-display>$0.00</div>
+            </div>
+            <div class="flex justify-between gap-5 my-4">
+              <h1>
+                Total <br />
+                <span class="text-gray-300 text-sm font-light">/ person</span>
+              </h1>
+              <div class="text-4xl" data-display>$00.00</div>
+            </div>
           </div>
 
           <button btn-reset class="w-full text-xl bg-green-200 text-green-800 font-bold p-2 rounded">RESET</button>
