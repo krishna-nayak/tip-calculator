@@ -12,16 +12,33 @@
     <style>
       body {
         font-family: "Space Mono", monospace;
+        background-color: hsl(185, 41%, 84%);
+      }
+      h1 {
+        color: hsl(186, 14%, 43%);
+        color: hsl(183, 100%, 15%);
       }
       input {
         color: transparent;
-        text-shadow: 0 0 0 #2196f3;
+        text-shadow: 0 0 0 hsl(183, 100%, 15%);
+      }
+      .strong-cyan {
+        color: hsl(172, 67%, 45%);
+      }
+      .bg-strong-cyan {
+        background-color: hsl(172, 67%, 45%);
+      }
+      .bg-v-dark-cyan {
+        background: hsl(183, 100%, 15%);
+      }
+      .v-dark-cyan {
+        color: hsl(183, 100%, 15%);
       }
     </style>
   </head>
-  <body class="bg-green-200">
+  <body>
     <div class="container 2xl:max-w-screen-lg lg:max-w-screen-md mx-auto md:mt-24">
-      <h1 class="text-center text-green-800 font-extrabold tracking-widest text-3xl my-10">
+      <h1 class="text-center font-extrabold tracking-widest text-3xl my-10">
         SPLI <br />
         TTER
       </h1>
@@ -41,11 +58,11 @@
           <div class="my-5">
             <h1>Select Tip %</h1>
             <div class="grid grid-cols-2 gap-3 w-full text-white">
-              <button btn-percentage class="px-4 w-full py-2 bg-green-900 rounded">5%</button>
-              <button btn-percentage class="px-4 w-full py-2 bg-green-900 rounded">10%</button>
-              <button btn-percentage class="px-4 w-full py-2 bg-green-900 rounded">15%</button>
-              <button btn-percentage class="px-4 w-full py-2 bg-green-900 rounded">25%</button>
-              <button btn-percentage class="px-4 w-full py-2 bg-green-900 rounded">50%</button>
+              <button btn-percentage class="px-4 w-full py-2 bg-v-dark-cyan font-bold rounded">5%</button>
+              <button btn-percentage class="px-4 w-full py-2 bg-v-dark-cyan font-bold rounded">10%</button>
+              <button btn-percentage class="px-4 w-full py-2 bg-v-dark-cyan font-bold rounded">15%</button>
+              <button btn-percentage class="px-4 w-full py-2 bg-v-dark-cyan font-bold rounded">25%</button>
+              <button btn-percentage class="px-4 w-full py-2 bg-v-dark-cyan font-bold rounded">50%</button>
               <input btn-tip-percentage type="number" class="px-4 py-2 bg-gray-100 rounded text-center font-bold" placeholder="Custom" dir="rtl" />
             </div>
           </div>
@@ -58,25 +75,25 @@
             </div>
           </div>
         </div>
-        <div id="display-bill" class="bg-green-900 rounded-xl px-3 py-5 text-white font-bold flex md:justify-between flex-col overflow-hidden">
+        <div id="display-bill" class="bg-v-dark-cyan rounded-xl px-3 py-5 text-white font-bold flex md:justify-between flex-col overflow-hidden">
           <div>
             <div class="flex justify-between gap-5">
-              <h1>
+              <h1 class="text-white">
                 Tip Amount <br />
                 <span class="text-gray-300 text-sm font-light">/ person</span>
               </h1>
-              <div class="text-4xl" data-display-tip>$0.00</div>
+              <div class="text-4xl strong-cyan" data-display-tip>$0.00</div>
             </div>
             <div class="flex justify-between gap-5 my-8">
-              <h1>
+              <h1 class="text-white">
                 Total <br />
                 <span class="text-gray-300 text-sm font-light">/ person</span>
               </h1>
-              <div class="text-4xl" data-display-person>$00.00</div>
+              <div class="text-4xl strong-cyan" data-display-person>$00.00</div>
             </div>
           </div>
 
-          <button btn-reset class="w-full text-xl bg-green-200 text-green-800 font-bold p-2 rounded">RESET</button>
+          <button btn-reset class="w-full text-xl bg-strong-cyan v-dark-cyan text-green-800 font-bold p-2 rounded">RESET</button>
         </div>
       </div>
     </div>

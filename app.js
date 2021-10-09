@@ -32,7 +32,6 @@ percentBtn.forEach((btn) => {
 
 // keyup -> run then display.
 customTip.addEventListener("keyup", (event) => {
-  console.log(customTip.value);
   calculation.focusButton(undefined, customTip.value, true);
 });
 
@@ -93,32 +92,38 @@ class Calculation {
     billInput.value = "";
   }
   focusBtnReset() {
-    this.previousBtn.style.backgroundColor = "darkgreen";
+    this.previousBtn.style.backgroundColor = "hsl(183, 100%, 15%)";
+    this.previousBtn.style.color = "hsl(0, 0%, 100%)";
   }
   // btn
   focusButton(btn, percentage, custom = false) {
     if (custom) {
       if (this.previousBtn !== undefined) {
-        this.previousBtn.style.backgroundColor = "darkgreen";
-      } else {
+        this.previousBtn.style.backgroundColor = "hsl(183, 100%, 15%)";
+        this.previousBtn.style.color = "hsl(0, 0%, 100%)";
+      } else if (btn === null) {
         this.percentBtn = btn;
-        this.percentBtn.style.backgroundColor = "darkgreen";
+        this.percentBtn.style.backgroundColor = "hsl(183, 100%, 15%)";
+        this.previousBtn.style.color = "hsl(0, 0%, 100%)";
       }
     } else {
       customTip.value = "";
       if (percentage === this.getPercentage()) {
-        this.focusButton(btn, "0", true);
+        this.focusButton(null, "0", true);
         return;
       } else if (this.previousBtn === undefined) {
         this.previousBtn = btn;
-        this.previousBtn.style.backgroundColor = "red";
+        this.previousBtn.style.backgroundColor = "hsl(172, 67%, 45%)"; // strong-cyan
+        this.previousBtn.style.color = "hsl(183, 100%, 15%)";
       } else {
-        this.previousBtn.style.backgroundColor = "darkgreen";
+        this.previousBtn.style.backgroundColor = "hsl(183, 100%, 15%)"; //v-dark-cyan
+        this.previousBtn.style.color = "hsl(0, 0%, 100%)";
         this.previousBtn = btn;
-        this.previousBtn.style.backgroundColor = "red";
+        this.previousBtn.style.backgroundColor = "hsl(172, 67%, 45%)"; // strong-cyan
       }
     }
     this.setPercentage(percentage);
+    console.log("percentage: " + this.getPercentage());
     this.update();
   }
 
