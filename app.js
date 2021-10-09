@@ -1,40 +1,3 @@
-const billInput = document.querySelector("[data-amount]");
-const percentBtn = document.querySelectorAll("[btn-percentage]");
-const customTip = document.querySelector("[btn-tip-percentage]");
-const tipAmount = document.querySelector("[data-display-tip]");
-const personAmount = document.querySelector("[data-display-person]");
-const btnReset = document.querySelector("[btn-reset]");
-const numberPeople = document.querySelector("[data-people]");
-
-let value = "";
-billInput.addEventListener("keyup", function () {
-  calculation.setBillInput(billInput.value);
-  calculation.update();
-});
-
-numberPeople.addEventListener("keyup", function () {
-  calculation.setNumberPeople(numberPeople.value);
-  calculation.update();
-});
-
-btnReset.addEventListener("click", () => {
-  calculation.reset();
-  calculation.update();
-});
-
-percentBtn.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    let percentageBtn = event.path[0].innerText;
-    percentage = parseInt(percentageBtn.slice(0, percentageBtn.length - 1));
-    calculation.focusButton(btn, percentage);
-  });
-});
-
-// keyup -> run then display.
-customTip.addEventListener("keyup", (event) => {
-  calculation.focusButton(undefined, customTip.value, true);
-});
-
 class Calculation {
   constructor(tipAmount, personAmount) {
     this.tipAmountText = tipAmount;
@@ -146,5 +109,41 @@ class Calculation {
     }
   }
 }
+
+const billInput = document.querySelector("[data-amount]");
+const percentBtn = document.querySelectorAll("[btn-percentage]");
+const customTip = document.querySelector("[btn-tip-percentage]");
+const tipAmount = document.querySelector("[data-display-tip]");
+const personAmount = document.querySelector("[data-display-person]");
+const btnReset = document.querySelector("[btn-reset]");
+const numberPeople = document.querySelector("[data-people]");
+
+billInput.addEventListener("keyup", function () {
+  calculation.setBillInput(billInput.value);
+  calculation.update();
+});
+
+numberPeople.addEventListener("keyup", function () {
+  calculation.setNumberPeople(numberPeople.value);
+  calculation.update();
+});
+
+btnReset.addEventListener("click", () => {
+  calculation.reset();
+  calculation.update();
+});
+
+percentBtn.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    let percentageBtn = event.path[0].innerText;
+    let percentage = parseInt(percentageBtn.slice(0, percentageBtn.length - 1));
+    calculation.focusButton(btn, percentage);
+  });
+});
+
+// keyup -> run then display.
+customTip.addEventListener("keyup", (event) => {
+  calculation.focusButton(undefined, customTip.value, true);
+});
 
 const calculation = new Calculation(tipAmount, personAmount);
