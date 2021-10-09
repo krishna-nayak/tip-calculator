@@ -7,20 +7,17 @@ const btnReset = document.querySelector("[btn-reset]");
 const numberPeople = document.querySelector("[data-people]");
 
 let value = "";
-billInput.addEventListener("keyup", function (event) {
-  console.log(billInput.value);
+billInput.addEventListener("keyup", function () {
   calculation.setBillInput(billInput.value);
   calculation.update();
 });
 
-numberPeople.addEventListener("keyup", function (event) {
-  console.log(numberPeople.value);
+numberPeople.addEventListener("keyup", function () {
   calculation.setNumberPeople(numberPeople.value);
   calculation.update();
 });
 
-btnReset.addEventListener("click", (event) => {
-  billInput.value = "";
+btnReset.addEventListener("click", () => {
   calculation.reset();
   calculation.update();
 });
@@ -35,8 +32,6 @@ percentBtn.forEach((btn) => {
 
 // keyup -> run then display.
 customTip.addEventListener("keyup", (event) => {
-  // FIXME: value display custom input
-  // TODO: setPercentage();
   console.log(customTip.value);
   calculation.focusButton(undefined, customTip.value, true);
 });
@@ -90,11 +85,12 @@ class Calculation {
   reset() {
     if (this.previousBtn !== undefined) this.focusBtnReset();
     this.previousBtn = undefined;
-    this.bill = undefined;
+    this.setBillInput(undefined);
     this.setPercentage(0);
     this.setNumberPeople(2);
     // DOM
     customTip.value = "";
+    billInput.value = "";
   }
   focusBtnReset() {
     this.previousBtn.style.backgroundColor = "darkgreen";
@@ -104,10 +100,16 @@ class Calculation {
     if (custom) {
       if (this.previousBtn !== undefined) {
         this.previousBtn.style.backgroundColor = "darkgreen";
+      } else {
+        this.percentBtn = btn;
+        this.percentBtn.style.backgroundColor = "darkgreen";
       }
     } else {
       customTip.value = "";
-      if (this.previousBtn === undefined) {
+      if (percentage === this.getPercentage()) {
+        this.focusButton(btn, "0", true);
+        return;
+      } else if (this.previousBtn === undefined) {
         this.previousBtn = btn;
         this.previousBtn.style.backgroundColor = "red";
       } else {
@@ -120,22 +122,16 @@ class Calculation {
     this.update();
   }
 
-  //TODO: calculate function
-  // Calculate
   calcuate() {
     let tip = (this.getBillInput() * this.getPercentage() * 0.01) / this.getNumberPeople();
     let amount = tip + this.getBillInput() / this.getNumberPeople();
     this.setTipPerson(tip);
     this.setAmount(amount);
-    console.log(this.getTipPerson());
-    console.log(this.getAmount());
-    // this.update();
   }
 
   // update
   update() {
     this.calcuate();
-
     if (isNaN(this.getPercentage()) || isNaN(this.getNumberPeople()) || isNaN(this.getBillInput())) {
       this.tipAmountText.innerText = `$0.00`;
       this.personAmountText.innerText = `$00.00`;
